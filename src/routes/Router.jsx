@@ -10,6 +10,8 @@ import SearchFeed from '../views/SearchFeed'
 const Router = () => {
    return (
       <BrowserRouter>
+      <Box sx={{ backgroundColor:'#000'}}>
+
       <Navbar/>
          <Routes>
             <Route exact path="/" element={<Feed />} />
@@ -17,6 +19,7 @@ const Router = () => {
             <Route path="/channel/:id" element={<ChannelDetail />} />
             <Route path="/search/:searchTerm" element={<SearchFeed />} />
          </Routes>
+      </Box>
       </BrowserRouter>
    );
 };
