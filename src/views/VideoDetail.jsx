@@ -13,7 +13,7 @@ const VideoDetail = () => {
 
    useEffect(() => {
       fetchApiVideos(`videos?part=snippet,statistics&id=${id}`)
-      .then((data) => setVideoDetail(data.items[0]));
+      .then((data) => setVideoDetail(data));
       console.log("videosdetail", videoDetail)
       
       fetchApiVideos(
@@ -22,12 +22,7 @@ const VideoDetail = () => {
     }, [id]);
     
     console.log("videosdetail", videoDetail) 
-    // console.log("title ",videoDetail.snippet.channelId)
-  //  console.log(videoDetail)
-  // const { snippet: { title, channelId, channelTitle }, statistics: { viewCount, likeCount } } = videoDetail;
-
-
-  //  if (!videoDetail?.snippet) return "loading";
+    console.log("title",videoDetail?.items[0]?.snippet?.title)
 
    return (
       <Box minHeight="95vh">
@@ -39,9 +34,8 @@ const VideoDetail = () => {
                      className="react-player"
                      controls
                   />
-                  <Typography color="#fff" variant="h5" fontWeight="bold" p={2}>
-                     {/* {videoDetail.snippet.title} */}
-                     {videoDetail.snippet.title}
+                  <Typography color="#fff" variant="h5" fontWeight="light" p={2}>
+                     {videoDetail? videoDetail.items[0].snippet.title: "---"}
                   </Typography>
                   <Stack
                      direction="row"
@@ -50,7 +44,7 @@ const VideoDetail = () => {
                      py={1}
                      px={2}
                   >
-                     <Link to={`/channel/${videoDetail.snippet.channelId}`}>
+                     {/* <Link to={`/channel/${videoDetail.snippet.channelId}`}> */}
                         <Typography
                            variant={{
                               sm: "subtitle1",
@@ -58,7 +52,7 @@ const VideoDetail = () => {
                            }}
                            color="#fff"
                         >
-                           {videoDetail.snippet.channelTitle}
+                           {/* {videoDetail.snippet.channelTitle} */}
                            <CheckCircle
                               sx={{
                                  fontSize: "12px",
@@ -67,7 +61,7 @@ const VideoDetail = () => {
                               }}
                            />
                         </Typography>
-                     </Link>
+                     {/* </Link> */}
                      <Stack direction="row" gap="20px" alignItems="center">
                         <Typography variant="body1" sx={{ opacity: 0.7 }}>
                            {/* {parseInt(videoDetail.statistics.viewCount).toLocaleString()} views */}
