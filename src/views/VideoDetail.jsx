@@ -21,9 +21,6 @@ const VideoDetail = () => {
       ).then((data) => setVideos(data.items));
    }, [id]);
 
-   console.log("videosdetail", videoDetail)
-   console.log("title", videoDetail?.items[0]?.snippet?.title)
-
    return (
       <Box minHeight="95vh">
          <Stack direction={{ xs: "column", md: "row" }}>
@@ -44,30 +41,30 @@ const VideoDetail = () => {
                      py={1}
                      px={2}
                   >
-                     {/* <Link to={`/channel/${videoDetail.snippet.channelId}`}> */}
-                     <Typography
-                        variant={{
-                           sm: "subtitle1",
-                           md: "h6",
-                        }}
-                        color="#fff"
-                     >
-                        {/* {videoDetail.snippet.channelTitle} */}
-                        <CheckCircle
-                           sx={{
-                              fontSize: "12px",
-                              color: "gray",
-                              ml: "5px",
+                     <Link to={`/channel/${videoDetail?.snippet?.channelId}`}>
+                        <Typography
+                           variant={{
+                              sm: "subtitle1",
+                              md: "h6",
                            }}
-                        />
-                     </Typography>
-                     {/* </Link> */}
+                           color="#fff"
+                        >
+                           {videoDetail?.items[0]?.snippet?.channelTitle}
+                           <CheckCircle
+                              sx={{
+                                 fontSize: "12px",
+                                 color: "gray",
+                                 ml: "5px",
+                              }}
+                           />
+                        </Typography>
+                     </Link>
                      <Stack direction="row" gap="20px" alignItems="center">
                         <Typography variant="body1" sx={{ opacity: 0.7 }}>
-                           {/* {parseInt(videoDetail.statistics.viewCount).toLocaleString()} views */}
+                           {parseInt(videoDetail?.items[0]?.statistics.viewCount).toLocaleString()} Views
                         </Typography>
                         <Typography variant="body1" sx={{ opacity: 0.7 }}>
-                           {/* {parseInt(videoDetail.statistics.likeCount).toLocaleString()} views */}
+                           {parseInt(videoDetail?.items[0]?.statistics?.likeCount).toLocaleString()} Likes
                         </Typography>
                      </Stack>
                   </Stack>
