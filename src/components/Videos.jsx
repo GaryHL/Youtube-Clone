@@ -4,18 +4,18 @@ import ChannelCard from "./ChannelCard";
 
 const Videos = ({ videos, direction }) => {
 
-   if(!videos?.length) return 'Loading...';
+   if (!videos?.length) return 'Loading...';
 
-   console.log("videos",videos)
+   console.log("videos", videos)
    return (
       <Stack direction={direction || "row"} flexWrap="wrap" justifyContent="start" gap={2}>
          {videos.map((item, index) => (
-            item.id.playlistId? 
-            null
-            : <Box key={index} >
-            {item.id.videoId && <VideoCard video={item}/>}
-            {item.id.channelId && <ChannelCard channelDetail={item}/>}
-        </Box>
+            item.id.playlistId ?
+               null
+               : <Box key={index} >
+                  {item.id.videoId && <VideoCard video={item} />}
+                  {item.id.channelId && <ChannelCard channelDetail={item} />}
+               </Box>
          ))}
       </Stack>
    );

@@ -24,8 +24,8 @@ const Navbar = () => {
                   alt="logo"
                   height={45}
                />
-            </Link>  
-               <SearchBar />
+            </Link>
+            <SearchBar />
          </Stack>
       </>
    );

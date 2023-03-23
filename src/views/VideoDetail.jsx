@@ -8,21 +8,21 @@ import Videos from "../components/Videos";
 
 const VideoDetail = () => {
    const [videos, setVideos] = useState(null);
-   const [videoDetail,setVideoDetail] = useState()
+   const [videoDetail, setVideoDetail] = useState()
    const { id } = useParams();
 
    useEffect(() => {
       fetchApiVideos(`videos?part=snippet,statistics&id=${id}`)
-      .then((data) => setVideoDetail(data));
+         .then((data) => setVideoDetail(data));
       console.log("videosdetail", videoDetail)
-      
+
       fetchApiVideos(
          `search?part=snippet&relatedToVideoId=${id}&type=video`
       ).then((data) => setVideos(data.items));
-    }, [id]);
-    
-    console.log("videosdetail", videoDetail) 
-    console.log("title",videoDetail?.items[0]?.snippet?.title)
+   }, [id]);
+
+   console.log("videosdetail", videoDetail)
+   console.log("title", videoDetail?.items[0]?.snippet?.title)
 
    return (
       <Box minHeight="95vh">
@@ -35,7 +35,7 @@ const VideoDetail = () => {
                      controls
                   />
                   <Typography color="#fff" variant="h5" fontWeight="light" p={2}>
-                     {videoDetail? videoDetail.items[0].snippet.title: "---"}
+                     {videoDetail ? videoDetail.items[0].snippet.title : "---"}
                   </Typography>
                   <Stack
                      direction="row"
@@ -45,22 +45,22 @@ const VideoDetail = () => {
                      px={2}
                   >
                      {/* <Link to={`/channel/${videoDetail.snippet.channelId}`}> */}
-                        <Typography
-                           variant={{
-                              sm: "subtitle1",
-                              md: "h6",
+                     <Typography
+                        variant={{
+                           sm: "subtitle1",
+                           md: "h6",
+                        }}
+                        color="#fff"
+                     >
+                        {/* {videoDetail.snippet.channelTitle} */}
+                        <CheckCircle
+                           sx={{
+                              fontSize: "12px",
+                              color: "gray",
+                              ml: "5px",
                            }}
-                           color="#fff"
-                        >
-                           {/* {videoDetail.snippet.channelTitle} */}
-                           <CheckCircle
-                              sx={{
-                                 fontSize: "12px",
-                                 color: "gray",
-                                 ml: "5px",
-                              }}
-                           />
-                        </Typography>
+                        />
+                     </Typography>
                      {/* </Link> */}
                      <Stack direction="row" gap="20px" alignItems="center">
                         <Typography variant="body1" sx={{ opacity: 0.7 }}>

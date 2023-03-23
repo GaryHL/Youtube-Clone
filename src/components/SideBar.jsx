@@ -3,7 +3,7 @@ import React from "react";
 import { categories } from "../utils/constants";
 
 
-const SideBar = ({selectedCategory,setSelectedCategory}) => {
+const SideBar = ({ selectedCategory, setSelectedCategory }) => {
    return (
       <Stack
          direction="row"
@@ -35,7 +35,7 @@ const SideBar = ({selectedCategory,setSelectedCategory}) => {
                      {category.icon}
                   </span>
                   <span
-                     style={{opacity:category.name === selectedCategory  ? '1' : '0.8'}}
+                     style={{ opacity: category.name === selectedCategory ? '1' : '0.8' }}
                   >{category.name}</span>
                </button>
             );
