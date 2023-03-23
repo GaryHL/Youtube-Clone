@@ -14,7 +14,6 @@ const ChannelDetail = () => {
 
    useEffect(() => {
       fetchApiVideos(`channels?part="snippet&id=${id}`).then((data) =>
-         // console.log(data)
       setChannelDetail(data?.items[0])
       );
 
@@ -22,7 +21,6 @@ const ChannelDetail = () => {
       (data) => setVideos(data?.items)
    );
 }, [id]);
-console.log('videos', videos)
 
 return (
    <Box minHeight="95vh">
@@ -34,7 +32,7 @@ return (
                height: "250px",
             }}
          ></div>
-         <ChannelCard channelDetail={channelDetail} marginTop={"-110px"} />
+         <ChannelCard channelDetail={channelDetail&&channelDetail} marginTop={"-110px"} />
       </Box>
       <Box display='flex' p="2">
          <Box sx={{ mr: { sm: '100px' } }} />
