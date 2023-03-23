@@ -8,21 +8,18 @@ import Videos from "../components/Videos";
 
 const VideoDetail = () => {
    const [videos, setVideos] = useState(null);
-   const [videoDetail,setVideoDetail] = useState()
+   const [videoDetail, setVideoDetail] = useState()
    const { id } = useParams();
 
    useEffect(() => {
       fetchApiVideos(`videos?part=snippet,statistics&id=${id}`)
-      .then((data) => setVideoDetail(data));
+         .then((data) => setVideoDetail(data));
       console.log("videosdetail", videoDetail)
-      
+
       fetchApiVideos(
          `search?part=snippet&relatedToVideoId=${id}&type=video`
       ).then((data) => setVideos(data.items));
-    }, [id]);
-    
-    console.log("videosdetail", videoDetail) 
-    console.log("title",videoDetail?.items[0]?.snippet?.title)
+   }, [id]);
 
    return (
       <Box minHeight="95vh">
@@ -35,7 +32,7 @@ const VideoDetail = () => {
                      controls
                   />
                   <Typography color="#fff" variant="h5" fontWeight="light" p={2}>
-                     {videoDetail? videoDetail.items[0].snippet.title: "---"}
+                     {videoDetail ? videoDetail.items[0].snippet.title : "---"}
                   </Typography>
                   <Stack
                      direction="row"
@@ -44,7 +41,7 @@ const VideoDetail = () => {
                      py={1}
                      px={2}
                   >
-                     {/* <Link to={`/channel/${videoDetail.snippet.channelId}`}> */}
+                     <Link to={`/channel/${videoDetail?.snippet?.channelId}`}>
                         <Typography
                            variant={{
                               sm: "subtitle1",
@@ -52,7 +49,7 @@ const VideoDetail = () => {
                            }}
                            color="#fff"
                         >
-                           {/* {videoDetail.snippet.channelTitle} */}
+                           {videoDetail?.items[0]?.snippet?.channelTitle}
                            <CheckCircle
                               sx={{
                                  fontSize: "12px",
@@ -61,13 +58,13 @@ const VideoDetail = () => {
                               }}
                            />
                         </Typography>
-                     {/* </Link> */}
+                     </Link>
                      <Stack direction="row" gap="20px" alignItems="center">
                         <Typography variant="body1" sx={{ opacity: 0.7 }}>
-                           {/* {parseInt(videoDetail.statistics.viewCount).toLocaleString()} views */}
+                           {parseInt(videoDetail?.items[0]?.statistics.viewCount).toLocaleString()} Views
                         </Typography>
                         <Typography variant="body1" sx={{ opacity: 0.7 }}>
-                           {/* {parseInt(videoDetail.statistics.likeCount).toLocaleString()} views */}
+                           {parseInt(videoDetail?.items[0]?.statistics?.likeCount).toLocaleString()} Likes
                         </Typography>
                      </Stack>
                   </Stack>

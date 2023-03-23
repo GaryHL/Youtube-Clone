@@ -3,19 +3,19 @@ import { Box, Stack } from "@mui/system";
 import React, { useState, useEffect } from "react";
 import SideBar from "../components/SideBar";
 import Videos from "../components/Videos";
-import {fetchApiVideos} from '../utils/fetchApi'
+import { fetchApiVideos } from '../utils/fetchApi'
 
 const Feed = () => {
 
-   const [selectedCategory,setSelectedCategory] = useState('New');
-   const [videos,setVideos] = useState([]);
+   const [selectedCategory, setSelectedCategory] = useState('New');
+   const [videos, setVideos] = useState([]);
 
 
    useEffect(() => {
       fetchApiVideos(`search?part=snippet&q=${selectedCategory}`)
-      .then((data) => setVideos(data.items))
+         .then((data) => setVideos(data.items))
    }, [selectedCategory])
-   
+
 
    return (
       <>
@@ -24,19 +24,19 @@ const Feed = () => {
                sx={{
                   height: { sx: "auto", md: "92vh" },
                   borderRight: "1px solid #3d3d3d",
-                  px: { sx: { sx: 0, md: 2 } },
+                  px: { sx: { sx: 0, md: 3 } },
                }}
             >
-               <SideBar 
-                  setSelectedCategory = {setSelectedCategory}
-                  selectedCategory = {selectedCategory}
+               <SideBar
+                  setSelectedCategory={setSelectedCategory}
+                  selectedCategory={selectedCategory}
                />
                <Typography
                   className="copyright"
                   variant="body2"
-                  sx={{ mt: 1.5, color: "#fff" }}
+                  sx={{ mt: 1.5, color: "#fff", px:'1rem' }}
                >
-                  Copyright 2023 GHL Media
+                  Copyright 2023 GH
                </Typography>
             </Box>
 
@@ -51,7 +51,7 @@ const Feed = () => {
                   <span style={{ color: "#f31503" }}> Videos</span>
                </Typography>
 
-               <Videos videos={videos}/>
+               <Videos videos={videos} />
             </Box>
          </Stack>
       </>

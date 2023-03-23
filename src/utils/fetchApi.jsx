@@ -13,8 +13,8 @@ const options = {
 };
 
 
-export const  fetchApiVideos = async (url) =>{
-    const {data} = await axios.get(`${baseUrl}/${url}`,options);
+export const fetchApiVideos = async (url) => {
+   const { data } = await axios.get(`${baseUrl}/${url}`, options);
 
-    return data;
+   return data;
 }
