@@ -24,7 +24,7 @@ const Feed = () => {
                sx={{
                   height: { sx: "auto", md: "92vh" },
                   borderRight: "1px solid #3d3d3d",
-                  px: { sx: { sx: 0, md: 2 } },
+                  px: { sx: { sx: 0, md: 3 } },
                }}
             >
                <SideBar
@@ -34,9 +34,9 @@ const Feed = () => {
                <Typography
                   className="copyright"
                   variant="body2"
-                  sx={{ mt: 1.5, color: "#fff" }}
+                  sx={{ mt: 1.5, color: "#fff", px:'1rem' }}
                >
-                  Copyright 2023 GHL Media
+                  Copyright 2023 GH
                </Typography>
             </Box>
 
