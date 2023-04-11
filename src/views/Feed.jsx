@@ -4,10 +4,11 @@ import React, { useState, useEffect } from "react";
 import SideBar from "../components/SideBar";
 import Videos from "../components/Videos";
 import { fetchApiVideos } from '../utils/fetchApi'
+import Loader from "../components/loader/Loader";
 
 const Feed = () => {
 
-   const [selectedCategory, setSelectedCategory] = useState('New');
+   const [selectedCategory, setSelectedCategory] = useState('Nuevos');
    const [videos, setVideos] = useState([]);
 
 
@@ -19,6 +20,7 @@ const Feed = () => {
 
    return (
       <>
+      <Loader></Loader>
          <Stack sx={{ flexDirection: { sx: "column", md: "row" } }}>
             <Box
                sx={{
@@ -48,7 +50,7 @@ const Feed = () => {
                   sx={{ color: "white" }}
                >
                   {selectedCategory}
-                  <span style={{ color: "#f31503" }}> Videos</span>
+                  <span style={{ color: "#f31503"}}> Videos</span>
                </Typography>
 
                <Videos videos={videos} />

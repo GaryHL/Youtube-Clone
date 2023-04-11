@@ -14,7 +14,6 @@ const VideoDetail = () => {
    useEffect(() => {
       fetchApiVideos(`videos?part=snippet,statistics&id=${id}`)
          .then((data) => setVideoDetail(data));
-      console.log("videosdetail", videoDetail)
 
       fetchApiVideos(
          `search?part=snippet&relatedToVideoId=${id}&type=video`
@@ -30,6 +29,15 @@ const VideoDetail = () => {
                      url={`https://www.youtube.com/watch?v=${id}`}
                      className="react-player"
                      controls
+                     config={{
+                        youtube: {
+                           playerVars: { 
+                              iv_load_policy: 3, // oculta el título y la información del video
+                              disablekb: 1,
+                              modestbranding: 1, // oculta el botón de compartir y otros controles
+                            }
+                        }
+                     }}
                   />
                   <Typography color="#fff" variant="h5" fontWeight="light" p={2}>
                      {videoDetail ? videoDetail.items[0].snippet.title : "---"}

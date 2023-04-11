@@ -6,7 +6,6 @@ const Videos = ({ videos, direction }) => {
 
    if (!videos?.length) return 'Loading...';
 
-   console.log("videos", videos)
    return (
       <Stack direction={direction || "row"} flexWrap="wrap" justifyContent="start" gap={2}>
          {videos.map((item, index) => (
